@@ -21,5 +21,8 @@
         <item name="colorControlActivated">@color/greenLight</item>
         <item name="colorControlHighlight">@color/greenLight</item>
     </style>
+    <style name="Toolbar" parent="Theme.AppCompat.NoActionBar">
+
+    </style>
 
 </resources>
