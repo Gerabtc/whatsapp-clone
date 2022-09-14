@@ -1,10 +1,12 @@
-package com.gerardusrocha.whatsappclone;
+package com.gerardusrocha.whatsappclone.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+
+import com.gerardusrocha.whatsappclone.R;
 
 public class LoginActivity extends AppCompatActivity {
 

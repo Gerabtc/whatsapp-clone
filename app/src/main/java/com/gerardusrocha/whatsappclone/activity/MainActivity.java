@@ -1,8 +1,10 @@
-package com.gerardusrocha.whatsappclone;
+package com.gerardusrocha.whatsappclone.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+
+import com.gerardusrocha.whatsappclone.R;
 
 public class MainActivity extends AppCompatActivity {
 
