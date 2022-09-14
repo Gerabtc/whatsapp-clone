@@ -13,4 +13,13 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="TextInputLayoutAppearance" parent="Widget.Design.TextInputLayout">
+        <item name="android:textColor">@color/black</item>
+        <item name="hintTextColor">@color/greenLight</item>
+        <item name="android:backgroundTint">@color/green</item>
+        <item name="colorControlNormal">@color/black</item>
+        <item name="colorControlActivated">@color/greenLight</item>
+        <item name="colorControlHighlight">@color/greenLight</item>
+    </style>
+
 </resources>
