@@ -4,11 +4,13 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Base64;
 import android.view.View;
 import android.widget.Toast;
 
 import com.gerardusrocha.whatsappclone.R;
 import com.gerardusrocha.whatsappclone.config.ConfiguracaoFirebase;
+import com.gerardusrocha.whatsappclone.helper.Base64Custom;
 import com.gerardusrocha.whatsappclone.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -45,6 +47,17 @@ public class CadastroActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
+
+                    try {
+
+                        String identificadorUsuario = Base64Custom.codificarBase64(usuario.getEmail());
+                        usuario.setId(identificadorUsuario);
+                        usuario.salvar();
+
+                    }catch (Exception e) {
+                        e.printStackTrace();
+                    }
+
                     Toast.makeText(CadastroActivity.this,
                             "Sucesso ao cadastrar usuário!",
                             Toast.LENGTH_SHORT).show();
