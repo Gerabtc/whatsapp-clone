@@ -11,6 +11,7 @@ import android.widget.Toast;
 import com.gerardusrocha.whatsappclone.R;
 import com.gerardusrocha.whatsappclone.config.ConfiguracaoFirebase;
 import com.gerardusrocha.whatsappclone.helper.Base64Custom;
+import com.gerardusrocha.whatsappclone.helper.UsuarioFirebase;
 import com.gerardusrocha.whatsappclone.model.Usuario;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -37,7 +38,7 @@ public class CadastroActivity extends AppCompatActivity {
 
     }
 
-    public void cadastrarUsuario(Usuario usuario) {
+    public void cadastrarUsuario(final Usuario usuario) {
 
         autenticacao = ConfiguracaoFirebase.getFirebaseAutenticacao();
         autenticacao.createUserWithEmailAndPassword(
@@ -47,6 +48,12 @@ public class CadastroActivity extends AppCompatActivity {
             public void onComplete(@NonNull Task<AuthResult> task) {
 
                 if (task.isSuccessful()) {
+
+                    Toast.makeText(CadastroActivity.this,
+                            "Sucesso ao cadastrar usuário!",
+                            Toast.LENGTH_SHORT).show();
+                    UsuarioFirebase.atualizarNomeUsuario(usuario.getNome());
+                    finish();
 
                     try {
 
@@ -58,10 +65,6 @@ public class CadastroActivity extends AppCompatActivity {
                         e.printStackTrace();
                     }
 
-                    Toast.makeText(CadastroActivity.this,
-                            "Sucesso ao cadastrar usuário!",
-                            Toast.LENGTH_SHORT).show();
-                    finish();
                 } else {
 
                     String excecao = "";
