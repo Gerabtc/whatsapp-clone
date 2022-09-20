@@ -37,6 +37,7 @@ import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
 import java.io.ByteArrayOutputStream;
+import java.util.UUID;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -140,7 +141,9 @@ public class ConfiguracoesActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
+
         if (resultCode == RESULT_OK) {
+
             Bitmap imagem = null;
 
             try {
@@ -163,7 +166,7 @@ public class ConfiguracoesActivity extends AppCompatActivity {
                     imagem.compress(Bitmap.CompressFormat.JPEG, 70, baos);
                     byte[] dadosImagem = baos.toByteArray();
 
-                    StorageReference imagemRef = storageReference
+                    final StorageReference imagemRef = storageReference
                             .child("imagens")
                             .child("perfil")
                             .child(identificadorUsuario)
