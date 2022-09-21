@@ -112,6 +112,8 @@ public class ChatActivity extends AppCompatActivity {
 
             salvarMensagem(idUsuarioRemetente, idUsuarioDestinatario, mensagem);
 
+            salvarMensagem(idUsuarioDestinatario, idUsuarioRemetente, mensagem);
+
 
         }else {
             Toast.makeText(ChatActivity.this,
