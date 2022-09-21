@@ -21,7 +21,7 @@
             app:srcCompat="@drawable/padrao" />
 
         <TextView
-            android:id="@+id/imageMensagemTexto"
+            android:id="@+id/textMensagemTexto"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Olá tudo bem?"
