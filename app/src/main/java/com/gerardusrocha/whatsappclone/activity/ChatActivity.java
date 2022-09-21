@@ -2,6 +2,8 @@ package com.gerardusrocha.whatsappclone.activity;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.net.Uri;
 import android.os.Bundle;
@@ -12,6 +14,7 @@ import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.gerardusrocha.whatsappclone.R;
+import com.gerardusrocha.whatsappclone.adapter.MensagemAdapter;
 import com.gerardusrocha.whatsappclone.config.ConfiguracaoFirebase;
 import com.gerardusrocha.whatsappclone.helper.Base64Custom;
 import com.gerardusrocha.whatsappclone.helper.UsuarioFirebase;
@@ -20,6 +23,9 @@ import com.gerardusrocha.whatsappclone.model.Usuario;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.google.firebase.database.DatabaseReference;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -31,6 +37,9 @@ public class ChatActivity extends AppCompatActivity {
     private Usuario usuarioDestinatario;
     private String idUsuarioRemetente;
     private String idUsuarioDestinatario;
+    private RecyclerView recyclerMensagens;
+    private MensagemAdapter adapter;
+    private List<Mensagem> mensagems = new ArrayList<>();
 
 
     @Override
@@ -47,6 +56,7 @@ public class ChatActivity extends AppCompatActivity {
         textViewNome = findViewById(R.id.textViewNomeChat);
         circleImageViewFoto = findViewById(R.id.circleImageFotoChat);
         editMensagem = findViewById(R.id.editMensagem);
+        recyclerMensagens = findViewById(R.id.recyclerMensagens);
 
         idUsuarioRemetente = UsuarioFirebase.getIdentificadorUsuario();
 
@@ -69,6 +79,13 @@ public class ChatActivity extends AppCompatActivity {
             idUsuarioDestinatario = Base64Custom.codificarBase64(usuarioDestinatario.getEmail());
 
         }
+
+        adapter = new MensagemAdapter(mensagems, getApplicationContext());
+
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getApplicationContext());
+        recyclerMensagens.setLayoutManager(layoutManager);
+        recyclerMensagens.setHasFixedSize(true);
+        recyclerMensagens.setAdapter(adapter);
 
     }
 
